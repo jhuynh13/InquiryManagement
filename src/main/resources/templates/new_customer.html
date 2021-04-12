@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeLeaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>New Customer</title>
+	</head>
+	
+	<body>
+		<div align="center">
+			<br />
+			<form action="#" th:action="@{/save}" th:object="${customers}" method="post">
+				<table border="0" cellpadding="10">
+					<tr>
+						<td>Customer Name:</td>
+						<td><input type="text" th:field="*{name}" /></td>
+					</tr>
+					<tr>
+						<td>Phone:</td>
+						<td><input type="text" th:field="*{phone}" /></td>
+					</tr>
+					<tr>
+						<td>Address:</td>
+						<td><input type="text" th:field="*{address}" /></td>
+					</tr>
+					<tr>
+						<td>Expense:</td>
+						<td><input type="text" th:field="*{expense}" /></td>
+					</tr>
+					<tr>
+						<td>Income:</td>
+						<td><input type="text" th:field="*{income}" /></td>
+					</tr>
+					<tr>
+						<td colspan="2"><button type="submit">Save</button></td>
+					</tr>
+				</table>
+			</form>		
+		</div>
+	</body>
+</html>

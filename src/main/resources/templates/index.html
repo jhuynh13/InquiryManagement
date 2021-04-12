@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Sales Manager</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Customer Management</h1>
+		<a href="/new">Create new customer</a>
+		<br>
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Customer ID</th>
+					<th>Name</th>
+					<th>Phone</th>
+					<th>Address</th>
+					<th>Expense</th>
+					<th>Income</th>
+					<th>Profit</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="customers : ${listCustomers}">
+					<td th:text="${customers.id}">Customer ID</td>
+					<td th:text="${customers.name}">Name</td>
+					<td th:text="${customers.phone}">Phone</td>
+					<td th:text="${customers.address}">Address</td>
+					<td th:text="${customers.expense}">Expense</td>
+					<td th:text="${customers.income}">Income</td>
+					<!-- Thymeleaf for displaying values in html
+						formatDecimal method from thymeleaf formats two decimal places
+					 -->
+					<td th:text="${#numbers.formatDecimal(customers.income - customers.expense, 1, 2, 'POINT')}">Profit</td>
+					<td>
+						<a th:href="@{'/edit/' + ${customers.id}}">Edit</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/delete/' + ${customers.id}}">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
